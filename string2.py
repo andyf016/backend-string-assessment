@@ -4,7 +4,7 @@ Kenzie assignment: String2
 """
 # Your name, plus anyone who helped you with this assignment.
 # Give credit where credit is due.
-__author__ = "???"
+__author__ = "Andy Fillenwarth, with a little bit of help from David R."
 
 # Copyright 2010 Google Inc.
 # Licensed under the Apache License, Version 2.0
@@ -23,8 +23,11 @@ __author__ = "???"
 
 
 def verbing(s):
-    # your code here
-    return
+    if len(s) >= 3 and s.endswith('ing'):
+        s = s + 'ly'
+    elif len(s) >= 3:
+        s = s + 'ing'
+    return s
 
 
 # E. not_bad
@@ -37,8 +40,12 @@ def verbing(s):
 
 
 def not_bad(s):
-    # your code here
-    return
+    new_s = s
+    not_find = s.find('not')
+    bad_find = s.find('bad') 
+    if not_find < bad_find:
+        new_s = s[0:not_find] + 'good' + s[bad_find+3:]
+    return new_s
 
 
 # F. front_back
@@ -52,9 +59,11 @@ def not_bad(s):
 
 
 def front_back(a, b):
-    # your code here
-    return
-
+    new_string = ''
+    a_div, a_rem = divmod(len(a), 2)    # Found out about divmod() on stackoverflow.com
+    b_div, b_rem = divmod(len(b), 2)
+    new_string = a[:a_div + a_rem] + b[:b_div + b_rem] + a[a_div + a_rem:] + b[b_div + b_rem:]
+    return new_string
 
 # Provided simple test() function used in main() to print
 # what each function returns vs. what it's supposed to return.
